@@ -15,7 +15,7 @@ public class GestorTareas {
         int totalPendientes = 0;
 
         // 1. Leer el fichero tareas.csv con Scanner
-        try (Scanner scanner = new Scanner(new File("tareas.csv"))) {
+        try (Scanner scanner = new Scanner(new File("CESEUVE.csv"))) {
             while (scanner.hasNextLine()) {
                 String linea = scanner.nextLine().trim();
                 if (linea.isEmpty()) {
@@ -32,7 +32,7 @@ public class GestorTareas {
                     int id = Integer.parseInt(campos[0].trim());
                     String titulo = campos[1].trim();
                     int duracion = Integer.parseInt(campos[2].trim());
-                    String estado = campos[3].trim();
+                    boolean estado = Boolean.parseBoolean(campos[3].trim());
 
                     Tarea tarea = new Tarea(id, titulo, duracion, estado);
                     listaTareas.add(tarea);
@@ -49,18 +49,18 @@ public class GestorTareas {
         // 2. Filtrar tareas pendientes y clasificarlas
         ArrayList<Tarea> tareasPendientes = new ArrayList<>();
         for (Tarea tarea : listaTareas) {
-            if ("Pendiente".equalsIgnoreCase(tarea.getEstado())) {
+            if (!tarea.isEstado()) {
                 tareasPendientes.add(tarea);
             }
         }
 
-        // 3. Guardar las tareas pendientes en tareas_pendientes.csv
+        // 3. Guardar las tareas pendientes en el archivo nuevo tareas_pendientes.csv
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("tareas_pendientes.csv"))) {
             for (Tarea tarea : tareasPendientes) {
                 String linea = tarea.getId() + ";"
                         + tarea.getTitulo() + ";"
                         + tarea.getduracion() + ";"
-                        + tarea.getClasificacion();
+                        + tarea.getEstado();
                 writer.write(linea);
                 writer.newLine();
                 totalPendientes++;
@@ -75,3 +75,4 @@ public class GestorTareas {
         System.out.println("Tareas pendientes guardadas: " + totalPendientes);
     }
 }
+
