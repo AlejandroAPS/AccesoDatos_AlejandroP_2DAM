@@ -1,11 +1,8 @@
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -213,8 +210,52 @@ public class Main {
         }
     }
 
+    /**
+     * Exporta el listado completo de movimientos a un fichero CSV legible,
+     * en datos/movimientos.csv. Se sobrescribe en cada exportación con el
+     * estado actual de la lista de movimientos.
+     */
     private static void exportarMovimientos(Cuenta cuenta) {
-        // TODO: lo implementaremos en el siguiente paso (elegir formato CSV/XML/JSON)
-        System.out.println("Función de exportación pendiente de implementar.");
+        if (cuenta.getMovimientos().isEmpty()) {
+            System.out.println("No hay movimientos que exportar todavía.");
+            return;
+        }
+
+        File ficheroCsv = new File(FICHERO_EXPORT_CSV);
+
+        try (BufferedWriter writer = new BufferedWriter(
+                new FileWriter(ficheroCsv, StandardCharsets.UTF_8))) {
+
+            writer.write("Fecha;Tipo;Concepto;Importe;Saldo resultante");
+            writer.newLine();
+
+            for (Movimiento m : cuenta.getMovimientos()) {
+                writer.write(String.join(";",
+                        m.getFecha().format(FORMATO_FECHA),
+                        m.getTipo().toString(),
+                        escaparCsv(m.getConcepto()),
+                        String.format(Locale.US, "%.2f", m.getImporte()),
+                        String.format(Locale.US, "%.2f", m.getSaldoResultante())));
+                writer.newLine();
+            }
+
+            System.out.println("Movimientos exportados correctamente a " + ficheroCsv.getPath());
+        } catch (IOException e) {
+            System.out.println("No se pudo exportar los movimientos: " + e.getMessage());
+        }
     }
+
+    /**
+     * Prepara un valor de texto para insertarlo con seguridad en una celda
+     * CSV: si contiene el delimitador (;), comillas o saltos de línea, lo
+     * envuelve entre comillas dobles y duplica las comillas internas, tal
+     * como exige el formato CSV estándar (RFC 4180).
+     */
+    private static String escaparCsv(String valor) {
+        if (valor.contains(";") || valor.contains("\"") || valor.contains("\n")) {
+            return "\"" + valor.replace("\"", "\"\"") + "\"";
+        }
+        return valor;
+    }
+
 }
