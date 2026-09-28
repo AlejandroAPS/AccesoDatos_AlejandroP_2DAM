@@ -15,10 +15,6 @@ public class Cuenta implements Serializable {
     private double saldo;
     private ArrayList<Movimiento> movimientos;
 
-    public Cuenta() {
-        this.movimientos = new ArrayList<>();
-    }
-
     public Cuenta(String numeroCuenta, Cliente titular) {
         this.numeroCuenta = numeroCuenta;
         this.titular = titular;

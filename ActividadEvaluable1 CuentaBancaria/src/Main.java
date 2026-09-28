@@ -6,9 +6,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+        private static final String DIRECTORIO_DATOS = "datos";
+        private static final String FICHERO_CUENTA = DIRECTORIO_DATOS + File.separator + "cuenta.dat";
+        private static final String FICHERO_EXPORT_CSV = DIRECTORIO_DATOS + File.separator + "movimientos.csv";
 
-    private static final String DIRECTORIO_DATOS = "datos";
-    private static final String FICHERO_CUENTA = DIRECTORIO_DATOS + File.separator + "cuenta.dat";
+        // Se define una sola vez y se reutiliza tanto al consultar por pantalla
+        // como al exportar, para no duplicar el patrón de fecha en dos sitios.
+        private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -257,5 +261,4 @@ public class Main {
         }
         return valor;
     }
-
 }
