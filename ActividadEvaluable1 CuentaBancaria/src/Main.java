@@ -81,7 +81,7 @@ public class Main {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FICHERO_CUENTA))) {
             return (Cuenta) ois.readObject();
         } catch (ClassNotFoundException e) {
-            // Solo pasaría si el fichero estuviera corrupto o fuera de otra versión de la app
+            // Solo pasaría si el fichero estuviera corrupto
             throw new IOException("El fichero de datos está corrupto o no es compatible.", e);
         }
     }
@@ -91,6 +91,7 @@ public class Main {
             oos.writeObject(cuenta);
         }
     }
+
 
     private static Cuenta crearNuevaCuenta(Scanner scanner) {
         System.out.println("--- Datos del titular ---");
@@ -237,9 +238,9 @@ public class Main {
                 writer.write(String.join(";",
                         m.getFecha().format(FORMATO_FECHA),
                         m.getTipo().toString(),
-                        escaparCsv(m.getConcepto()),
-                        String.format(Locale.US, "%.2f", m.getImporte()),
-                        String.format(Locale.US, "%.2f", m.getSaldoResultante())));
+                        exportarCsv(m.getConcepto()),
+                        String.format(Locale.of("es", "ES"), "%.2f", m.getImporte()),
+                        String.format(Locale.of("es","ES"), "%.2f", m.getSaldoResultante())));
                 writer.newLine();
             }
 
@@ -255,7 +256,7 @@ public class Main {
      * envuelve entre comillas dobles y duplica las comillas internas, tal
      * como exige el formato CSV estándar (RFC 4180).
      */
-    private static String escaparCsv(String valor) {
+    private static String exportarCsv(String valor) {
         if (valor.contains(";") || valor.contains("\"") || valor.contains("\n")) {
             return "\"" + valor.replace("\"", "\"\"") + "\"";
         }
