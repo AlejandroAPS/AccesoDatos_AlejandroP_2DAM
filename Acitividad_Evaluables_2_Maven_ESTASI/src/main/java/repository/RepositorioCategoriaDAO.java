@@ -114,10 +114,13 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Producto p = new Producto();
+                    Producto p = new Producto();
+                    p.setIdproducto(rs.getInt("idproducto"));
                     p.setNombre(rs.getString("nombre"));
-                    p.setStock(rs.getInt("Stock"));
+                    p.setIdcategoria(rs.getInt("idcategoria"));
+                    p.setMedida(rs.getString("medida"));
                     p.setPrecio(rs.getInt("precio"));
-
+                    p.setStock(rs.getInt("stock"));
                     productos.add(p);
                 }
             }
