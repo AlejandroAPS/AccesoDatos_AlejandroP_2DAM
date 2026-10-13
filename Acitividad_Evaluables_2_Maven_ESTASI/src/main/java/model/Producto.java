@@ -34,9 +34,18 @@ public class Producto {
     public int getStock() { return stock; }
     public void setStock(int stock) { this.stock = stock; }
 
+    private String nombreCategoria;
+
+    public String getNombreCategoria() { return nombreCategoria; }
+    public void setNombreCategoria(String nombreCategoria) { this.nombreCategoria = nombreCategoria; }
+
     @Override
     public String toString() {
-        return idproducto + " - " + nombre + " (cat=" + idcategoria + "), medida="
-                + medida + ", precio=" + precio + ", stock=" + stock;
+        return nombre + " | " + nombreCategoria + " | " + medida
+                + " | " + precio + " € | Stock: " + stock;
+    }
+
+    public String toResumen() {
+        return nombre + " | " + nombreCategoria + " | " + precio + " € | Stock: " + stock;
     }
 }

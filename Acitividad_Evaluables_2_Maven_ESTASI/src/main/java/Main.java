@@ -43,33 +43,41 @@ private static void mostrarMenu () {
     System.out.print("Elige una opción: ");
 }
 
-private static void mostrarLista(String titulo, List<Producto> productos) {
+private static void mostrarLista(String titulo, List<Producto> productos,
+                                 java.util.function.Function<Producto, String> formato) {
     System.out.println("\n--- " + titulo + " ---");
     if (productos.isEmpty()) {
         System.out.println("No se han encontrado productos.");
         return;
     }
-    productos.forEach(System.out::println);
+    productos.forEach(p -> System.out.println(formato.apply(p)));
     System.out.println("Total: " + productos.size());
 }
 private static void menosde20() {
-    mostrarLista("Productos de 20 euros o menos", productoDAO.getProductosPorRangoPrecio(0, 20));
+    mostrarLista("Productos de 20 euros o menos",
+            productoDAO.getProductosPorRangoPrecio(0, 20),
+            Producto::toResumen);
 }
 
 
-private static void productosVeg(){
-    List<String> vegetarianas = List.of("Bebidas", "Granos/Cereales", "Frutas/Verduras", "Condimentos");
-    mostrarLista("Productos veganos", productoDAO.getProductosPorCategorias(vegetarianas));
+private static void productosVeg() {
+    List<String> veganas = List.of("Bebidas", "Granos/Cereales", "Frutas/Verduras", "Condimentos");
+    mostrarLista("Productos veganos",
+            productoDAO.getProductosPorCategorias(veganas),
+            Producto::toString);
+}
+
+private static void urgenteReponer() {
+    mostrarLista("Productos urgentes de reponer (stock <= 10)",
+            productoDAO.getProductosBajoStock(10),
+            Producto::toResumen);
 }
 
 
-private static void urgenteReponer(){
-    mostrarLista("Productos urgentes de reponer (stock <= 10)", productoDAO.getProductosBajoStock(10));
-}
-
-private static void mostrarAlergicosPescado(){
+private static void mostrarAlergicosPescado() {
     mostrarLista("Productos aptos para alérgicos al pescado",
-            productoDAO.getProductosExcluyendoCategoria("Pescado/Marisco"));
+            productoDAO.getProductosExcluyendoCategoria("Pescado/Marisco"),
+            Producto::toString);
 }
 
 private static void cerrarUtilidades(Scanner scanner){

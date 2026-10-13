@@ -12,11 +12,18 @@ import java.util.List;
 
 public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer> {
 
+
+    private static final String SELECT_BASE =
+            "SELECT p.idproducto, p.nombre, p.idcategoria, c.categoria AS nombrecategoria, "
+                    + "p.medida, p.precio, p.stock "
+                    + "FROM producto p LEFT JOIN categoria c ON p.idcategoria = c.idcategoria ";
+
     private Producto mapear(ResultSet rs) throws SQLException {
         Producto p = new Producto();
         p.setIdproducto(rs.getInt("idproducto"));
         p.setNombre(rs.getString("nombre"));
         p.setIdcategoria(rs.getInt("idcategoria"));
+        p.setNombreCategoria(rs.getString("nombrecategoria"));
         p.setMedida(rs.getString("medida"));
         p.setPrecio(rs.getInt("precio"));
         p.setStock(rs.getInt("stock"));
@@ -55,7 +62,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
 
     @Override
     public Producto findById(Integer id) {
-        String sql = "SELECT * FROM producto WHERE idproducto = ?";
+        String sql = SELECT_BASE + "WHERE p.idproducto = ?";
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, id);
             try (ResultSet rs = ps.executeQuery()) {
@@ -87,7 +94,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
 
     @Override
     public List<Producto> getList() {
-        String sql = "SELECT * FROM producto";
+        String sql = SELECT_BASE + "ORDER BY p.nombre";
         List<Producto> productos = new ArrayList<>();
         try (Statement st = ConexionDB.getConexion().createStatement();
              ResultSet rs = st.executeQuery(sql)) {
@@ -101,7 +108,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
     // ---------- Consultas avanzadas ----------
 
     public List<Producto> getProductosPorRangoPrecio(int min, int max) {
-        String sql = "SELECT * FROM producto WHERE precio BETWEEN ? AND ? ORDER BY precio";
+        String sql = SELECT_BASE + "WHERE p.precio BETWEEN ? AND ? ORDER BY p.precio";
         List<Producto> productos = new ArrayList<>();
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, min);
@@ -116,7 +123,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
     }
 
     public List<Producto> getProductosBajoStock(int limite) {
-        String sql = "SELECT * FROM producto WHERE stock <= ? ORDER BY stock";
+        String sql = SELECT_BASE + "WHERE p.stock <= ? ORDER BY p.stock";
         List<Producto> productos = new ArrayList<>();
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, limite);
@@ -133,9 +140,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
         if (categorias.isEmpty()) return productos;
 
         String marcadores = String.join(", ", java.util.Collections.nCopies(categorias.size(), "?"));
-        String sql = "SELECT p.* FROM producto p "
-                + "JOIN categoria c ON p.idcategoria = c.idcategoria "
-                + "WHERE c.categoria IN (" + marcadores + ") ORDER BY p.nombre";
+        String sql = SELECT_BASE + "WHERE c.categoria IN (" + marcadores + ") ORDER BY p.nombre";
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             for (int i = 0; i < categorias.size(); i++) {
@@ -151,9 +156,7 @@ public class RepositorioProductoDAO implements RepositorioDAO<Producto, Integer>
     }
 
     public List<Producto> getProductosExcluyendoCategoria(String categoria) {
-        String sql = "SELECT p.* FROM producto p "
-                + "JOIN categoria c ON p.idcategoria = c.idcategoria "
-                + "WHERE c.categoria <> ? ORDER BY p.nombre";
+        String sql = SELECT_BASE + "WHERE c.categoria <> ? ORDER BY p.nombre";
         List<Producto> productos = new ArrayList<>();
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setString(1, categoria);

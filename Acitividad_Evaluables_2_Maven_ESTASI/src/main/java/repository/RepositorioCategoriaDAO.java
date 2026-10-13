@@ -14,7 +14,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
     @Override
     public boolean add(Categoria data) {
-        String sql = "INSERT INTO CATEGORIA VALUES (?, ?)";
+        String sql = "INSERT INTO categoria VALUES (?, ?)";
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, data.getIdcategoria());
@@ -30,7 +30,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
     @Override
     public boolean remove(Integer id) {
-        String sql = "DELETE FROM CATEGORIA WHERE idCategoria = ?";
+        String sql = "DELETE FROM categoria WHERE idCategoria = ?";
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -45,7 +45,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
     @Override
     public Categoria findById(Integer id) {
-        String sql = "SELECT * FROM CATEGORIA WHERE idCategoria = ?";
+        String sql = "SELECT * FROM categoria WHERE idCategoria = ?";
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -68,7 +68,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
     @Override
     public boolean update(Categoria data) {
-        String sql = "UPDATE CATEGORIA SET Categoria = ? WHERE idCategoria = ?";
+        String sql = "UPDATE categoria SET Categoria = ? WHERE idCategoria = ?";
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
             ps.setString(1, data.getCategoria());
@@ -84,7 +84,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
     @Override
     public List<Categoria> getList() {
-        String sql = "SELECT * FROM Categoria";
+        String sql = "SELECT * FROM categoria";
         List<Categoria> categorias = new ArrayList<>();
 
         try (
@@ -105,7 +105,7 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
     }
 
     public List<Producto> getProductosPorCategoria(Integer id) {
-        String sql = "SELECT * FROM PRODUCTO WHERE idCategoria = ?";
+        String sql = "SELECT * FROM producto WHERE idCategoria = ?";
         List<Producto> productos = new ArrayList<>();
 
         try (PreparedStatement ps = ConexionDB.getConexion().prepareStatement(sql)) {
@@ -113,7 +113,6 @@ public class RepositorioCategoriaDAO implements RepositorioDAO<Categoria, Intege
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    Producto p = new Producto();
                     Producto p = new Producto();
                     p.setIdproducto(rs.getInt("idproducto"));
                     p.setNombre(rs.getString("nombre"));
