@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="local" class="com.ejemplo.Local">
+        <property name="nombre" value="Sala Aurora"/>
+        <property name="direccion" value="Calle Mayor 12, Getafe"/>
+    </bean>
+
+
+    <bean id="fiesta" class="com.ejemplo.Fiesta">
+        <property name="nombre" value="Cumpleaños de Ana"/>
+        <property name="local" ref="local"/>
+    </bean>
+
+</beans>
