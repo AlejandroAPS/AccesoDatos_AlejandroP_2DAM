@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b86f69d-d025-4307-989c-91c01e9b11d6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP/src/main/java/org/example/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP/src/main/java/org/example/Conductor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP/src/main/resources/context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/src/main/java/org/example/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/src/main/java/org/example/Conductor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/src/main/java/org/example/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../EjemploAOP_ver_2/src/main/resources/context.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clase/beans/Main2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clase/beans/Obra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/clase/beans/Publico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Obra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Publico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjemploAOP/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemploAOP/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../EjemploAOP/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../EjemploAOP/src/main/java/org/example/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0009901948044824" />
+      <entry key="MS500" value="1.2506941089752694" />
+      <entry key="S2" value="1.707597080163328" />
+      <entry key="S5" value="1.8707919646273017" />
+      <entry key="S10" value="1.9331623463402827" />
+      <entry key="S30" value="1.9772051238560215" />
+      <entry key="S60" value="1.988536860140289" />
+      <entry key="M2" value="1.994251909799669" />
+      <entry key="M5" value="1.9976967868544704" />
+      <entry key="M10" value="1.9988477295636558" />
+      <entry key="M15" value="1.9992316721082626" />
+      <entry key="M30" value="1.9996157622348012" />
+      <entry key="H1" value="1.9998078626590217" />
+      <entry key="H2" value="1.999903926714473" />
+      <entry key="H4" value="1.9999519622034214" />
+      <entry key="D1" value="1.9999919935403137" />
+      <entry key="W1" value="1.99999885621612" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9274560723211976" />
+      <entry key="MS500" value="1.2290435751361075" />
+      <entry key="S2" value="1.6991478809460316" />
+      <entry key="S5" value="1.8669775903684926" />
+      <entry key="S10" value="1.9311720281278284" />
+      <entry key="S30" value="1.9765221099130803" />
+      <entry key="S60" value="1.988192834555752" />
+      <entry key="M2" value="1.9940792618537135" />
+      <entry key="M5" value="1.9976275745302188" />
+      <entry key="M10" value="1.99881309781793" />
+      <entry key="M15" value="1.999208578588135" />
+      <entry key="M30" value="1.999604212628815" />
+      <entry key="H1" value="1.9998020871443416" />
+      <entry key="H2" value="1.9999010387791851" />
+      <entry key="H4" value="1.9999505181912873" />
+      <entry key="D1" value="1.9999917528654452" />
+      <entry key="W1" value="1.9999988218338447" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3Ls18lMVtaskgtvdmJ2axlEWMz0" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/CampusFP.A14-PC04.000/Desktop/EjerciciosClase/Acceso a datos/Ejercicios Acceso a datos/AccesoDatos_AlejandroP_2DAM/Teatro_AOP/src/main/java/org/example/Main.java",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b86f69d-d025-4307-989c-91c01e9b11d6" name="Changes" comment="" />
+      <created>1794227805344</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794227805344</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

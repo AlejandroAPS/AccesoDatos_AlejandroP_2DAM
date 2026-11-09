@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+
+
+    <bean id="coche" class="org.example.Coche">
+        <constructor-arg index="0" value="5587ABC" type="java.lang.String"/>
+        <constructor-arg index="1" value="Opel Corsa" type="java.lang.String"/>
+    </bean>
+
+
+    <bean id="prepacion" class="org.example.Conductor"/>
+
+
+    <aop:config>
+        <aop:aspect ref="prepacion">
+            <aop:pointcut id="puntoArrancar"
+                          expression="execution(* org.example.Coche.arrancar(..)) and target (co)" />
+            <aop:before method="antesArrancar"
+                        pointcut-ref="puntoArrancar" arg-names="co"/>
+            <aop:after-returning method="despuesArrancar"
+                                 pointcut-ref="puntoArrancar" arg-names="co"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
